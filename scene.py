@@ -1,12 +1,6 @@
 import cairo
 import math
 
-# Set up the surface
-WIDTH, HEIGHT = 600, 1200  # Canvas dimensions
-BG_GRADIENT_START = (0.7, 0.7, 0.7)  # Light grey at the top
-BG_GRADIENT_END = (0.5, 0.5, 0.5)  # Darker grey at the bottom
-
-
 def create_surface(width, height, start_color, end_color):
     surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
     context = cairo.Context(surface)
@@ -124,9 +118,7 @@ def draw_sun(context, center_x, center_y, radius):
 
 
 # Main drawing function
-def draw_scene():
-    surface, context = create_surface(WIDTH, HEIGHT, BG_GRADIENT_START, BG_GRADIENT_END)
-
+def draw_scene(context, surface):
     # Draw outer orange arch (larger arch with border)
     draw_arch(context, 50, 250, 500, 500, (1, 0.4, 0.1), border_color=(1, 0.2, 0), border_width=8)
 
@@ -143,6 +135,4 @@ def draw_scene():
     draw_smiley(context, 180, 950, 50)
 
     # Save the result to a file
-    surface.write_to_png("sphere.png")
-
-draw_scene()
+    surface.write_to_png("scene.png")

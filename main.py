@@ -1,8 +1,9 @@
-import smiley
+import scene
 
-WIDTH, HEIGHT = 600, 600
-BG_COLOR = (0.9, 0.9, 0.9)
+WIDTH, HEIGHT = 600, 1200  # Canvas dimensions
+BG_GRADIENT_START = (0.7, 0.7, 0.7)  # Light grey at the top
+BG_GRADIENT_END = (0.5, 0.5, 0.5)  # Darker grey at the bottom
 
 if __name__ == '__main__':
-    surface, context = smiley.create_surface(WIDTH, HEIGHT, BG_COLOR)
-    smiley.draw_smiley(surface, context, 300, 300, 200)
+    surface, context = scene.create_surface(WIDTH, HEIGHT, BG_GRADIENT_START, BG_GRADIENT_END)
+    scene.draw_scene(context, surface)
