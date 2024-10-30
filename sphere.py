@@ -73,22 +73,23 @@ def draw_smiley(context, center_x, center_y, radius):
     context.fill()
 
     # Draw the eyes with oval scaling and radial gradient
-    def draw_eye(context, eye_x, eye_y, eye_radius_x, eye_radius_y):
-        context.save()  # Save the context state
+    def draw_eye(context, eye_x, eye_y, eye_radius):
+        context.save()
         context.translate(eye_x, eye_y)
-        context.scale(1, 1.5)  # Scale the circle to an oval
-        context.arc(0, 0, eye_radius_x, 0, 2 * math.pi)
-        eye_gradient = cairo.RadialGradient(0, 0, 0, 0, 0, eye_radius_x)
-        eye_gradient.add_color_stop_rgb(0, 0.41, 0.3,0.03)  # Brown at the center
-        eye_gradient.add_color_stop_rgb(1, 0.3, 0.3, 0.3)  # Grey at the edge
+        context.scale(1, 1.5)
+        context.arc(0, 0, eye_radius, 0, 2 * math.pi)
+        eye_gradient = cairo.RadialGradient(0, 0, eye_radius * 0.1, 0, 0, eye_radius)
+        eye_gradient.add_color_stop_rgb(0, 0.61, 0.35, 0.03)
+        eye_gradient.add_color_stop_rgb(0.7, 0.41, 0.3, 0.03)
+        eye_gradient.add_color_stop_rgb(1, 0.31, 0.25, 0.03)
         context.set_source(eye_gradient)
         context.fill()
         context.restore()  # Restore the context state
 
     # Left eye
-    draw_eye(context, center_x - radius * 0.4, center_y - radius * 0.3, radius * 0.1, radius * 0.15)
+    draw_eye(context, center_x - radius * 0.4, center_y - radius * 0.3, radius * 0.1)
     # Right eye
-    draw_eye(context, center_x + radius * 0.4, center_y - radius * 0.3, radius * 0.1, radius * 0.15)
+    draw_eye(context, center_x + radius * 0.4, center_y - radius * 0.3, radius * 0.1)
 
     # Draw the smile with rounded line caps
     context.set_line_cap(cairo.LINE_CAP_ROUND)  # Set line cap to round
@@ -143,6 +144,5 @@ def draw_scene():
 
     # Save the result to a file
     surface.write_to_png("sphere.png")
-
 
 draw_scene()
