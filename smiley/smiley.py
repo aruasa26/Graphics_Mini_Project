@@ -59,4 +59,4 @@ def draw_smiley(surface, context, center_x, center_y, radius):
     context.set_line_width(10)
     context.stroke()
 
-    surface.write_to_png("smiley.png")
+    surface.write_to_png("smiley/smiley.png")

@@ -135,4 +135,4 @@ def draw_scene(context, surface):
     draw_smiley(context, 180, 950, 50)
 
     # Save the result to a file
-    surface.write_to_png("scene.png")
+    surface.write_to_png("scene/scene.png")

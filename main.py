@@ -1,4 +1,4 @@
-import scene
+from scene import scene
 
 WIDTH, HEIGHT = 600, 1200  # Canvas dimensions
 BG_GRADIENT_START = (0.7, 0.7, 0.7)  # Light grey at the top
